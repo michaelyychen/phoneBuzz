@@ -2,15 +2,15 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>TwilioServlet</servlet-name>
-        <servlet-class>servlet.TwilioServlet</servlet-class>
+        <servlet-class>com.twilio.TwilioServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>FizzBuzzServlet</servlet-name>
-        <servlet-class>servlet.FizzBuzzServlet</servlet-class>
+        <servlet-class>com.twilio.FizzBuzzServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>replayFizzBuzz</servlet-name>
-        <servlet-class>servlet.ReplayFizzBuzz</servlet-class>
+        <servlet-class>com.twilio.ReplayFizzBuzz</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>TwilioServlet</servlet-name>
@@ -24,9 +24,14 @@
         <servlet-name>replayFizzBuzz</servlet-name>
         <url-pattern>/replayFizzBuzz</url-pattern>
     </servlet-mapping>
-s
-
-
+    <filter>
+        <filter-name>TwilioRequestValidatorFilter</filter-name>
+        <filter-class>com.twilio.TwilioRequestValidatorFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TwilioRequestValidatorFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <session-config>
         <session-timeout>
             30

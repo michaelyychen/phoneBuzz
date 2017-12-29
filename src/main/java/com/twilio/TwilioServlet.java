@@ -4,6 +4,8 @@ import com.twilio.http.TwilioRestClient;
 import com.twilio.rest.api.v2010.account.Call;
 
 import com.twilio.type.PhoneNumber;
+
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +25,12 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
+@WebServlet(
+        name = "TwilioServlet",
+        urlPatterns = {"/twiml"}
+)
+
 public class TwilioServlet extends HttpServlet {
 
     // Find your Account Sid and Auth Token at twilio.com/console
@@ -31,7 +39,8 @@ public class TwilioServlet extends HttpServlet {
     public static final String TWILIO_NUMBER = "3478366163";
     public static final String PUBLIC_IP = "http://7b440ea3.ngrok.io";   // Place a public accessible IP here
     public static HashMap <String,String> timeVersusSID = new HashMap<String,String>();
-    
+
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 

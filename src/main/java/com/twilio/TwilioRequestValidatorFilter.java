@@ -3,6 +3,8 @@ package com.twilio;
 import com.twilio.security.RequestValidator;
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -11,6 +13,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+
+//@WebFilter(
+//        filterName = "TwilioRequestValidatorFilter",
+//        urlPatterns = {"/*"}
+//)
 
 public class TwilioRequestValidatorFilter implements Filter {
 

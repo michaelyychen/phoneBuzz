@@ -12,6 +12,7 @@ import com.twilio.twiml.VoiceResponse;
 import com.twilio.type.PhoneNumber;
 import java.io.IOException;
 import java.net.URI;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,12 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author MC
  */
+
+
+@WebServlet(
+        name = "ReplayFizzBuzz",
+        urlPatterns = {"/replayFizzBuz"}
+)
 public class ReplayFizzBuzz extends HttpServlet {
 
     public static final String ACCOUNT_SID = "ACdabe19f914a1c8467b401a72437ab5df";
@@ -28,6 +35,7 @@ public class ReplayFizzBuzz extends HttpServlet {
     public static final String PUBLIC_IP = "http://7b440ea3.ngrok.io";   // Place a public accessible IP here
     public static int previousSelection = 1;
 
+    @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         VoiceResponse.Builder builder = new VoiceResponse.Builder();
@@ -42,6 +50,7 @@ public class ReplayFizzBuzz extends HttpServlet {
         }
     }
 
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.out.println("asdasd " + request.getParameter("id") + request.getParameter("phone"));
 

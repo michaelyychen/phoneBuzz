@@ -18,6 +18,7 @@ import java.io.PrintWriter;
 import java.net.URI;
 import java.util.HashMap;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,12 +27,19 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author MC
  */
+
+@WebServlet(
+        name = "FizzBuzzServlet",
+        urlPatterns = {"/fizzBuzz"}
+)
 public class FizzBuzzServlet extends HttpServlet {
 
 
 
     public static HashMap<String, Integer> SidVersusChoice = new HashMap<String, Integer>();
 
+
+    @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         VoiceResponse.Builder builder = new VoiceResponse.Builder();
