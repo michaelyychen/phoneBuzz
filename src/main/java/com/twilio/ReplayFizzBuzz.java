@@ -57,7 +57,7 @@ public class ReplayFizzBuzz extends HttpServlet {
         TwilioRestClient client = new TwilioRestClient.Builder(ACCOUNT_SID, AUTH_TOKEN).build();
         PhoneNumber to = new PhoneNumber(request.getParameter("phone").replaceAll("-", ""));
         PhoneNumber from = new PhoneNumber(TWILIO_NUMBER);
-        URI uri = URI.create(PUBLIC_IP + "/phone/replayFizzBuzz");
+        URI uri = URI.create(PUBLIC_IP + "/replayFizzBuzz");
         Call call = Call.creator(to, from, uri).create(client);
         
         String sid = TwilioServlet.timeVersusSID.get(request.getParameter("id")); // This returns the sid of previous call

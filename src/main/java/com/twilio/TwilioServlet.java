@@ -57,7 +57,7 @@ public class TwilioServlet extends HttpServlet {
 
         PhoneNumber to = new PhoneNumber(request.getParameter("phone").replaceAll("-", ""));
         PhoneNumber from = new PhoneNumber(TWILIO_NUMBER);
-        URI uri = URI.create( PUBLIC_IP + "/phone/fizzBuzz");
+        URI uri = URI.create( PUBLIC_IP + "/fizzBuzz");
 
         TimerTask delayedThreadStartTask = new TimerTask() {
             @Override
