@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(
         name = "ReplayFizzBuzz",
-        urlPatterns = {"/replayFizzBuz"}
+        urlPatterns = {"/replayFizzBuzz"}
 )
 public class ReplayFizzBuzz extends HttpServlet {
 
@@ -52,7 +52,6 @@ public class ReplayFizzBuzz extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        System.out.println("asdasd " + request.getParameter("id") + request.getParameter("phone"));
 
         TwilioRestClient client = new TwilioRestClient.Builder(ACCOUNT_SID, AUTH_TOKEN).build();
         PhoneNumber to = new PhoneNumber(request.getParameter("phone").replaceAll("-", ""));
