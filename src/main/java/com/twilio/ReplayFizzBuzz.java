@@ -32,7 +32,7 @@ public class ReplayFizzBuzz extends HttpServlet {
     public static final String ACCOUNT_SID = "ACdabe19f914a1c8467b401a72437ab5df";
     public static final String AUTH_TOKEN = "0706d0c260eb051e7083dc2e5749b852";
     public static final String TWILIO_NUMBER = "3478366163";
-    public static final String PUBLIC_IP = "http://7b440ea3.ngrok.io";   // Place a public accessible IP here
+    public static final String PUBLIC_IP = "https://blooming-harbor-51663.herokuapp.com";   // Place a public accessible IP here
     public static int previousSelection = 1;
 
     @Override
