@@ -24,8 +24,6 @@
         <servlet-name>replayFizzBuzz</servlet-name>
         <url-pattern>/replayFizzBuzz</url-pattern>
     </servlet-mapping>
-s
-
 
     <session-config>
         <session-timeout>
