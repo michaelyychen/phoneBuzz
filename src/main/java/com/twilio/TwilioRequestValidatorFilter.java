@@ -1,10 +1,10 @@
 package com.twilio;
 
+
 import com.twilio.security.RequestValidator;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -14,18 +14,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-
 //@WebFilter(
-//        filterName = "TwilioRequestValidatorFilter",
+//        filterName = "requestValidatorFilter",
 //        urlPatterns = {"/*"}
 //)
 
+
 public class TwilioRequestValidatorFilter implements Filter {
+
+    private final String currentEnvironment = System.getenv("ENVIRONMENT");
 
     private RequestValidator requestValidator;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
+
         requestValidator = new RequestValidator(System.getenv("TWILIO_AUTH_TOKEN"));
     }
 
@@ -49,7 +52,7 @@ public class TwilioRequestValidatorFilter implements Filter {
                     signatureHeader);
         }
 
-        if(isValidRequest) {
+        if(isValidRequest || environmentIsTest()) {
             chain.doFilter(request, response);
         } else {
             ((HttpServletResponse)response).sendError(HttpServletResponse.SC_FORBIDDEN);
@@ -59,6 +62,10 @@ public class TwilioRequestValidatorFilter implements Filter {
     @Override
     public void destroy() {
         // Nothing to do
+    }
+
+    private boolean environmentIsTest() {
+        return "test".equals(currentEnvironment);
     }
 
     private Map<String, String> extractPostParams(HttpServletRequest request) {
